@@ -19,7 +19,7 @@ router.get('/dogs', async (req, res, next) => {
     try {
         let allDogs = await allInfo();
         allDogs = allDogs.map(d => {
-            return { id: d.id, name: d.name, img: d.image, temperaments: d.temperaments, weight: d.weight }
+            return { id: d.id, name: d.name, image: d.image, temperaments: d.temperaments, weight: d.weight, fromDb: d.fromDb }
         });
         if (name) {
             let dogsNames = allDogs.filter(dogs => dogs.name.toLowerCase().includes(name.toLowerCase()))
@@ -56,11 +56,10 @@ router.get('/temperament', async (req, res, next) => {
 });
 
 router.post('/dog', async (req, res, next) => {
-    const { name, image, height, weight, temperaments, life_span, bred_for, origin } = req.body
+    const { name, image, height, weight, temperaments, life_span, bred_for, origin, fromDb } = req.body
     try {
-        if (!name || !weight || !height) return res.status(417).send('Required fields are missing');
-        // let dogsName= await allInfo();
-        // dogsName = dogsName.find(s => s.name.toLowerCase() === name.toLowerCase());
+        if (!name || !weight || !height) return res.status(417).json({msg: 'Required fields are missing'});
+        
         let dogCreated = await Dog.findOrCreate({
             where: { name: name },
             defaults: {
@@ -72,7 +71,6 @@ router.post('/dog', async (req, res, next) => {
                 bred_for,
                 origin
             }
-
         });
         
         if (temperaments && dogCreated[1]) {
@@ -85,7 +83,7 @@ router.post('/dog', async (req, res, next) => {
         }
         return dogCreated[1] === true ? 
         res.json({msg: 'Dog Breed created succesfully', Dog: dogCreated[0]}) :
-        res.send({msg: 'Dog Breed already exist', Dog: dogCreated[0]})
+        res.json({msg: 'Dog Breed name already exist', Dog: dogCreated[0]})
     } catch (e) {
         next(e);
     }

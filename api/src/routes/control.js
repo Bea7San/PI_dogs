@@ -8,17 +8,27 @@ const { API_KEY } = process.env;
 const apiInfo = async () => {
     const api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
     const info = api.data.map(info => {
+        let weight = info.weight?.metric.split( ' - ')
+        weight = weight?.filter(w => !w.includes('NaN'))
+        let weightC = ''
+        if (weight.length >1) {
+            weightC = weight.join(' - ')
+        } else if (weight.length === 1) {
+            weightC = weight.toString();
+        } else {
+            weightC = 'no info'
+        }          
+        // let weightC = weight.lenght > 1 ? weight.join(' - ') : weight.toString()
         return {
             id: info.id,
             image: info.image?.url,
             name: info.name,
             temperaments: info.temperament,
-            weight: info.weight?.metric,
-            height: info.heigth?.metric,
+            weight: weightC,
+            height: info.height?.metric,
             life_span: info.life_span,
             origin: info.origin,
             bred_for: info.bred_for,
-
         };
     });
     return info;

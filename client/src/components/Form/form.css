@@ -1,0 +1,30 @@
+.temps {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 15vh;
+
+}
+
+.label {
+
+    margin: 5px 30px;
+    min-width: fit-content;
+    width: 200px;
+}
+
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+.tempsBox {
+    width: 300px;
+    /* padding: 50px; */
+    margin: 10px;
+    border-style: solid;
+    display: flex;
+    justify-content: left;
+
+
+}

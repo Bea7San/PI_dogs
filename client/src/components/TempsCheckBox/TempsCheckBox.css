@@ -1,0 +1,10 @@
+li {
+    display: flex;
+    
+}
+.labels {
+    text-align: left;
+    
+    width: 125px;
+}
+

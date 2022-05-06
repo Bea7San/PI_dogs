@@ -1,0 +1,13 @@
+.InARow{
+    display: flex;
+    flex-direction: row;
+}
+
+.homeTop {
+    margin: 30px
+    
+}
+.content{
+    display: flex;
+    
+}

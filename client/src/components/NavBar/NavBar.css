@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Radio+Canada:wght@300;400;500;600;700&display=swap');
+
+.navBar {
+    background-color: rgb(251, 216, 223);
+    
+    height: 7vh;
+    position: sticky;
+    top: 0px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+.items{
+    margin-left: 45vw; 
+    padding: 0; 
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+
+.list-item {
+
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: right;
+    justify-items: right;
+    font-family: 'Radio Canada', sans-serif;
+    font-size: 1.2em;
+    
+}
+
+.list-item a {
+       
+    padding:  5px 40px;    
+    text-decoration: none;    
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 900;
+    font-size: 2.4em;
+    color: rgb(39, 76, 119);
+    padding: 0px;
+    margin: 0px 15px;
+    display: flex;
+    text-align: left;
+    align-items: center;
+}
+.link {
+    text-decoration: none;
+    color: rgb(39, 76, 119); 
+    
+    
+}
+.list-item a:hover{
+background-color: rgb(255, 240, 243);
+border-radius: 30px;
+}
+
+.title a:visited {
+    color: rgb(39, 76, 119);
+    
+}
+
+.logo {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+
+.selected {
+    color: rgb(39, 76, 119);
+    font-weight: 550;
+    background-color: rgb(255, 240, 243);
+    border: 2px solid ;
+    
+    border-color:  rgb(39, 76, 119);
+    border-radius: 40px;
+    /* border-bottom-left-radius: 15px;
+    border-bottom-right-radius:15px; */
+    
+    
+}
