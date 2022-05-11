@@ -10,9 +10,11 @@ export const DOG_DETAIL = 'DOG_DETAIL';
 export const CLEAR_DOGGY = 'CLEAR_DOGGY';
 export const LOADING_AGAIN = 'LOADING_AGAIN';
 export const DELETE_DOG = 'DELETE_DOG';
+const URL_LOCAL = 'http://localhost:3001';
+const URL_HEROKU = 'https://ledoggy.herokuapp.com/';
 
 export const getDogs = () => dispatch => {
-    return fetch('http://localhost:3001/dogs')
+    return fetch(`${URL_HEROKU}dogs`)
         .then(d => d.json())
         .then(data => {
             dispatch({ type: GET_ALL_DOGS, payload: data })
@@ -24,7 +26,7 @@ export const getDogs = () => dispatch => {
 export const getTemperaments = () => {
     return async function (dispatch) {
         try {
-            var json = await axios.get('http://localhost:3001/temperament')
+            var json = await axios.get(`${URL_HEROKU}temperament`)
             return dispatch({
                 type: GET_TEMPERAMENTS,
                 payload: json.data
@@ -65,7 +67,7 @@ export const createDog = (args) => {
     
     return async function (dispatch) {
         try {
-            var json = await axios.post('http://localhost:3001/dog', args)
+            var json = await axios.post(`${URL_HEROKU}dog`, args)
             return dispatch({
                 type: CREATE_DOG,
                 payload: [json.data.msg, json.data.Dog, json.data.temperaments]
@@ -88,7 +90,7 @@ export const clearCreted = () => {
 export const dogDetail = (id) => {
     return async function (dispatch) {
         try {
-            var json = await axios.get(`http://localhost:3001/dogs/${id}`)
+            var json = await axios.get(`${URL_HEROKU}dogs/${id}`)
             return dispatch({
                 type: DOG_DETAIL,
                 payload: json.data
@@ -115,7 +117,7 @@ export const loadingAgain = () => {
 export const deleteDog = (id) => {
     return async function (dispatch) {
         try {
-            var json = await axios.delete(`http://localhost:3001/dogs/${id}`)
+            var json = await axios.delete(`${URL_HEROKU}dogs/${id}`)
             return dispatch({
                 type: DELETE_DOG,
                 payload:json.data
