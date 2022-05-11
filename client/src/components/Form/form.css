@@ -1,30 +1,214 @@
+
+.bigForm {
+    font-family: 'Montserrat', sans-serif;
+    width: 700px;
+    min-height: 900px;
+    margin: auto;
+    margin-top: 40px;
+    padding: 16px;;
+    background-color: rgb(39, 76, 119, 0.786);
+    border-radius: 10px;
+}
+.espacio{
+    height: 70px;
+    
+}
+.createTitle{
+    
+    font-weight: 600;
+    font-size: 2em;
+    color: rgb(255, 204, 213);
+     
+}
+.inputsBox{
+    width: 700px;
+    min-height: 100px; 
+    align-items: left;
+    justify-content: left;
+    justify-items: left;    
+}
+.inputsForm{
+    width: 520px;
+    height: 35px;
+    border-radius: 15px;
+    border-color:  rgb(255, 240, 243);
+    padding-left: 15px; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;
+}
+.inputsLabels{
+    width: 500px;
+    display: flex;
+    margin-left: 80px;
+    margin-bottom: 4px;
+    padding-left: 15px; 
+    font-weight: 550;
+    font-size: 1.1em;
+    color: rgb(255, 204, 213);
+    text-shadow: 8px 8px 8px 8px rgb(0, 0, 0);
+}
+.imgPreview{
+    border-radius: 20px;
+    margin: 10px;
+}
+.errorbox{    
+    display: flex;
+    justify-content: right;
+    text-shadow: 1px 1px rgb(69, 95, 126);
+    width: 500px;
+    margin: auto;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgb(164, 3, 3);  
+    text-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.724);
+}
+.danger{
+    border: 2px solid;
+    border-color: rgb(164, 19, 60);
+}
+.addtempsBox{
+    width: 700px;
+    max-height: 2000px; 
+    margin: 0px;
+    align-items: left;
+    justify-content: left;
+    justify-items: left; 
+}
+.buttonBox{
+    height: 70px;
+    display:flex;    
+}
+.addTempsB{
+    margin: 10px 0px 4px 82px;
+    height: 5vh;
+    width: 180px;
+    background-color: rgb(251, 216, 223);
+    border: 2px solid;
+    border-radius: 15px;
+    border-color:  rgb(255, 179, 193);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    color: rgb(39, 76, 119);
+    transition: 0.3s;
+}
+.addTempsB:hover{
+    cursor: pointer;
+    height: 5.2vh;
+    width: 185px;
+    box-shadow: 0px 0px 8px 8px rgba(0, 3, 5, 0.313);
+    font-size: 0.95em;
+    font-weight: 700;
+}
+.tempSearch{
+    margin: 10px 4px 4px 86px;
+    padding-left: 8px;
+    width: 180px;
+    height: 28px;
+    border: 2px solid;
+    border-radius: 20px;
+    border-color:  rgb(255, 179, 193);
+    font-family: 'Montserrat', sans-serif;
+}
+.clearTempB{
+    margin: 11px 4px 4px 4px;
+    height: 32px;
+    width: 70px;
+    background-color: rgb(251, 216, 223);
+    border: 2px solid;
+    border-radius: 12px;
+    border-color:  rgb(255, 179, 193);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: rgb(39, 76, 119);
+    transition: 0.2s;
+}
+.clearTempB:hover{
+    cursor: pointer;
+    height: 33px;
+    width: 71px;
+    box-shadow: 0px 0px 5px 5px rgba(0, 3, 5, 0.313);
+    font-weight: 700;
+}
 .temps {
     display: flex;
-    flex-wrap: wrap;
-    margin-left: 15vh;
+    flex-wrap: wrap;    
+    margin-left: 86px;
 
 }
 
-.label {
-
-    margin: 5px 30px;
-    min-width: fit-content;
+.labelFtem {
     width: 200px;
-}
-
-
-section {
+    height: 30px;
     display: flex;
-    justify-content: center;
-}
-
-.tempsBox {
-    width: 300px;
-    /* padding: 50px; */
-    margin: 10px;
-    border-style: solid;
-    display: flex;
+    align-items: center;
     justify-content: left;
+    justify-items: left;
+    align-content: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 550;    
+    color: rgb(255, 179, 193);
+    
+}
 
+.labelFtem:hover{
+    cursor: pointer;
+    background-color: rgb(255, 179, 193);
+    color: rgb(39, 76, 119);
+    
+}
+.tempadded{
+    cursor: pointer;
+    background-color: rgb(255, 179, 193);
+    color: rgb(39, 76, 119);
+}
+.crteButtonBox{
+    height: 70px;
+    width: 700px;
+    display: flex;
+    justify-content: right;
+}
+.crteButton{
+    margin: 5px 82px 0px 0px;
+    width: 110px;
+    height: 40px;
+    background-color: rgb(251, 216, 223);
+    border: 2px solid;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgb(39, 76, 119);
+}
+.crteButton:hover{
+    cursor: pointer;
+    width: 111px;
+    height: 41px;
+    box-shadow: 0px 0px 8px 8px rgba(0, 3, 5, 0.313);
+}
+.crteButton:disabled{
+    background-color: rgba(251, 216, 223, 0.567);
+    color: rgba(39, 76, 119, 0.567);
+    border-color: rgb(39, 76, 119, 0567);
+    cursor: default;
+    width: 110px;
+    height: 40px;
+    box-shadow: none;    
+}
+.backButton{
+    width: 110px;
+    height: 40px;
+    background-color: rgb(251, 216, 223);
+    border: 2px solid;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgb(39, 76, 119);
+    transition: 0.3s;
 
+}
+.backButton:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 14px 4px rgba(0, 3, 5, 0.313);
 }

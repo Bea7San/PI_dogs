@@ -5,6 +5,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Home from './components/Home/Home';
 import Form from './components/Form/Form';
 import Details from './components/Details/Details'
+import About from './components/About/About'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/home' component={Home}/>
         <Route path='/create' component={Form} />
         <Route path='/doggy/:dogId' component={Details} />
+        <Route path='/about' component={About} />
         
       </div>
     </React.Fragment>

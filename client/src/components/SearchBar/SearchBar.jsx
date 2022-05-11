@@ -1,19 +1,20 @@
 import React, { useState } from "react";
+import './searchBar.css'
 
 const SearchBar = (props) => {
-    const [breed, setBreed] = useState('')
+    
 
     function handleChange(e) {
-        setBreed(e.target.value)
         props.handleSearch(e)
         
     }
     return (
         <input
-            type='text'
+            type='search'
             placeholder='Search by name...'
-            value={breed}
+            value={props.breedName}
             onChange={e => handleChange(e)}
+            className='searchBar'
         />
     )
 }

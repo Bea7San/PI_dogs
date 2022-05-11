@@ -1,0 +1,49 @@
+
+
+.landing {
+    
+    background-image: url('../../images/Artboard\ 11.png');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-position: center;
+}
+
+.landingtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 4em;
+    color: rgb(251, 216, 223);
+    text-align: left;
+    position: absolute;
+    top: 7vh;
+    left: 2vw;
+    transform: rotate(-0.04turn);
+    
+}
+.h1Title{
+    /* margin: 20px 50px; */
+    margin: 0;
+    /* transform: rotate(-0.05turn) */
+}
+
+.landhome {
+    margin: auto;
+    position: absolute;
+    /* left: 31vw;
+    top: 29vh; */
+    left: 32vw;
+    top: 29vh;    
+    transition: 1s;
+}
+
+.landhome:hover{
+    transform: rotate(-0.04turn);
+    
+    
+}

@@ -1,13 +1,15 @@
+import './landingPage.css'
+import Asset1 from '../../images/Asset 1.png'
 import React from 'react';
 import {Link} from 'react-router-dom';
 
 
 export default function LandingPage(){
     return (
-        <div>
-            <h1>LEDOGGY</h1>
+        <div className='landing'>
+            <div className='landingtitle' ><h1 className='h1Title' >LeDoggy</h1></div>
             <Link to = {'/home'}>
-                <button>Start</button>
+                <img className='landhome' src={Asset1} />
             </Link>
         </div>
     )

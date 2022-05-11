@@ -3,22 +3,26 @@ import React from "react";
 export default function validate(input) {
     let errors = {};
     if (!input.name) {
-        errors.name = 'Breed name is required'
+        errors.name = '*Breed name is required'
+        errors.button = true;
+    }
+    else if (input.name && !/^[a-zA-Z\s]*$/.test(input.name)) {
+        errors.name = 'Breed name must only contain letters'
         errors.button = true;
     }
     else if (input.name && input.name.length > 30) {
-        errors.name = 'Breed name must not contain more than 30 characters'
+        errors.name = 'Breed name must not be larger than 30 characters'
         errors.button = true;
     }
-    else if (input.name && !/\S\S[A-Za-z ]+$/.test(input.name)) {
-        errors.name = 'Breed name must not contain numbers or special characters'
+    else if (input.name && input.name.length < 3) {
+        errors.name = 'Breed name must have at least 3 characters'
         errors.button = true;
     };
     if (!input.weight) {
-        errors.weight = 'Weight is required'
+        errors.weight = '*Weight is required'
         errors.button = true;
     } else if (!/^(0|[1-9][0-9]*)-(0|[1-9][0-9]*)$/.test(input.weight)) {
-        errors.weight = 'Weight must have a "maxWeight-minWeight" format'
+        errors.weight = 'Weight must have a "minWeight-maxWeight" format'
         errors.button = true;
     } else {
         let wDif = input.weight.split('-');
@@ -36,10 +40,10 @@ export default function validate(input) {
         }
     }
     if (!input.height) {
-        errors.height = 'Height is required'
+        errors.height = '*Height is required'
         errors.button = true;
     } else if (!/^(0|[1-9][0-9]*)-(0|[1-9][0-9]*)$/.test(input.height)) {
-        errors.height = 'Height must have a "maxHeight-minHeight" format'
+        errors.height = 'Height must be in a "minHeight-maxHeight" format'
         errors.button = true;
 
     } else {
@@ -60,7 +64,7 @@ export default function validate(input) {
 
     if (input.life_span) {
         if (!/^(0|[1-9][0-9]*)-(0|[1-9][0-9]*)$/.test(input.life_span)) {
-            errors.life_span = 'Life span must be a number followed by a "-" followed number'
+            errors.life_span = 'Life span must be in a "minYears-maxYears" format'
             errors.button = true;
         } else {
             let lSpan = input.life_span.split('-');
@@ -75,11 +79,11 @@ export default function validate(input) {
         }
     }
     if (input.image && !/^http[^]*.(jpg|jpeg|gif|png|tiff|bmp)((.*))?$/.test(input.image)) {
-        errors.image = 'Image format must be a URL with jpg, jpeg, gif, png, tiff or bmp extension'
+        errors.image = 'URL must have a valid image extension'
         errors.button = true;
     }
-    if (input.origin && !/\S\S[A-Za-z ]+$/.test(input.origin)) {
-        errors.origin = 'Country of Origin must not contain numbers or special characters'
+    if (input.origin && !/^[a-zA-Z\s]*$/.test(input.origin)) {
+        errors.origin = 'Country of Origin must only contain letters'
         errors.button = true;
     }
     if (Object.keys(errors) === 1) {

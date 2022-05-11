@@ -14,29 +14,40 @@ export class SideBar extends React.Component {
     }
     componentDidMount() {
         this.props.getTemperaments();
-        
+
     }
 
-
     render() {
-        
+
         return (
             <nav className='allBar'>
                 <div className='generalList'>
                     <div className='bringMe'>Bring me</div>
-                    
-                    <li><button className='sideBotton' value='mine' onClick={e => this.props.handleBringMe(e)}>My Breeds</button></li>
-                    <li><button className='sideBotton sideBottonM' value='existing' onClick={e => this.props.handleBringMe(e)}>Predefined Breeds</button></li>
-                    <li><button className='sideBotton' value='all'onClick={e => this.props.handleBringMe(e)}>All Breeds</button></li>
 
-                    <div className='bringMe'>Show Temperaments</div>
-                    <ul className='list'>
-                        {
-                            this.props.temperaments?.map(t => 
-                                <TempsCheckBox key={t} name={t} handleTempsChange={this.props.handleTempsChange}/>
-                            )
+                    <div>
+                        {/* <input className='sideBotton' value='My Breeds' name='mine' type='button' onClick={e => this.props.handleBringMe(e)} /> */}
+                        <button className={this.props.bringMe === 'mine' ? 'sideBotton pressed' : 'sideBotton'} name='mine'
+                            onClick={e => this.props.handleBringMe(e)}>My Breeds</button>
+                        <button className={this.props.bringMe === 'fromDb' ? 'sideBotton pressed' : 'sideBotton'} name='fromDb' onClick={e => this.props.handleBringMe(e)}>Predefined Breeds</button>
+                        <button className={this.props.bringMe === 'all' ? 'sideBotton pressed' : 'sideBotton'} name='all'
+                            onClick={e => this.props.handleBringMe(e)}>All Breeds</button>
+                    </div>
+
+                    <div className='bringMe'>Temperaments</div>
+
+                    <div className='scrollingTsb'>
+                        {this.props.showTemps.length ? this.props.showTemps.map(st =>
+                            <button className='tempButtons' key={st} value={st} onClick={this.props.handleTempClick} >{st}</button>) : null
                         }
-                    </ul>
+                    </div>
+
+                    <div className='scrollingTside'>
+                        {this.props.temperaments?.map(t =>
+                                <TempsCheckBox key={t} name={t} handleTempsChange={this.props.handleTempsChange} showTemps={this.props.showTemps} />)
+                        }
+                    </div>
+
+
                 </div>
             </nav>
         )

@@ -56,7 +56,7 @@ const allInfo = async () => {
     const apinfo = await apiInfo();
     const dbinfor = await dbInfo();
     
-    return apinfo.concat(dbinfor)
+    return dbinfor.concat(apinfo)
 };
 
 const chargeTemp = async (showme) => {
@@ -85,10 +85,18 @@ const allTemps = async () => {
     });
 };
 
+const deleteDog = async (id) => {
+    let dogToDelete = await allInfo();
+    dogToDelete = dogToDelete.find(dog => dog.id.toString() === id);
+    return dogToDelete;
+}
+
+
 module.exports = {
     apiInfo,
     dbInfo,
     allInfo,
     chargeTemp,
-    allTemps
+    allTemps,
+    deleteDog
 }

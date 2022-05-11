@@ -6,7 +6,7 @@ require('dotenv').config();
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const { API_KEY } = process.env;
-const { apiInfo, dbInfo, allInfo, chargeTemp, allTemps } = require('./control')
+const { apiInfo, dbInfo, allInfo, chargeTemp, allTemps, deleteDog } = require('./control')
 const router = Router();
 
 // Configurar los routers
@@ -43,6 +43,7 @@ router.get('/dogs/:idRaza', async (req, res, next) => {
     }
 });
 
+
 router.get('/temperament', async (req, res, next) => {
     try {
         let allTempers = await allTemps();
@@ -56,13 +57,17 @@ router.get('/temperament', async (req, res, next) => {
 });
 
 router.post('/dog', async (req, res, next) => {
-    const { name, image, height, weight, temperaments, life_span, bred_for, origin, fromDb } = req.body
+    const { name, image, height, weight, temperaments, life_span, bred_for, origin, fromDb } = req.body;
     try {
         if (!name || !weight || !height) return res.status(417).json({msg: 'Required fields are missing'});
-        
-        let dogCreated = await Dog.findOrCreate({
-            where: { name: name },
-            defaults: {
+        let allDogs = await allInfo();
+        let thisDog = allDogs.find(d => d.name === name)
+        if (thisDog !== undefined) {
+            return res.json({msg: 'Dog Breed name already exist', Dog: thisDog})
+        }
+        let dogCreated = await Dog.create({
+            // where: { name: name },
+            // defaults: {
                 name,
                 image,
                 height,
@@ -70,24 +75,44 @@ router.post('/dog', async (req, res, next) => {
                 life_span,
                 bred_for,
                 origin
-            }
+            // }
         });
         
-        if (temperaments && dogCreated[1]) {
+        if (temperaments) {
             temperaments.forEach(async (t) => {
                 let tempAdded = await Temperament.findOne({
                     where: { name: t }
                 })
-                dogCreated[0].addTemperament(tempAdded)
+                dogCreated.addTemperament(tempAdded)
             })
         }
-        return dogCreated[1] === true ? 
-        res.json({msg: 'Dog Breed created succesfully', Dog: dogCreated[0]}) :
-        res.json({msg: 'Dog Breed name already exist', Dog: dogCreated[0]})
+        
+        res.json({msg: 'Dog Breed created succesfully', Dog: dogCreated, temperaments: temperaments?.join(', ')})
+
+        // return dogCreated[1] === true ? 
+        // res.json({msg: 'Dog Breed created succesfully', Dog: dogCreated[0]}) 
+        // : res.json({msg: 'Dog Breed name already exist', Dog: dogCreated[0]})
     } catch (e) {
         next(e);
     }
 
-})
+});
+router.delete('/dogs/:idRaza', async (req, res, next) => {
+    const { idRaza } = req.params;
+    try{
+        let dogToDelete = await deleteDog(idRaza);
+        if (!dogToDelete) return res.status(404).json({msg: 'Dog breed not found'}) 
+        if (!/^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/.test(idRaza)){
+            return res.status(417).json({msg:"Predefined breeds can't be deleted"})
+        }
+        
+        await Dog.destroy({
+            where: {id: idRaza}
+        });
+        return res.status(200).json({msg: 'Dog breed deleted'})   
+    } catch (e) {
+        next (e)
+    }
+});
 
 module.exports = router;

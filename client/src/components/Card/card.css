@@ -1,0 +1,60 @@
+.photosCont {
+    display: flex;
+    height: 250px;
+    width: 260px;
+    /* align-content: center; */
+    justify-content: center;
+    /* align-items: center; */
+    margin-left: auto;
+    margin-right: auto;
+    /* border-radius: 30px; */
+}
+
+.doggysPhotos {
+
+    object-fit: cover;
+    max-height: 250px;
+    min-height: 200px;
+    min-width: 170px;
+    max-width: 260px;
+    /* border-radius: 30px; */
+
+}
+
+.cardIns {
+    padding-top: 8px;
+    background-color: rgba(39, 76, 119, 0.786);
+    width: 280px;
+    height: 430px;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 10px;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0px 10px 10px rgba(0, 0, 0, 0.419);
+    transition: 0.3s;
+    overflow: auto;
+    -ms-overflow-style: marquee;
+
+}
+.cardIns:hover{
+    box-shadow: 0px 0px 12px 12px rgba(0, 0, 0, 0.496);
+    background-color: rgba(39, 76, 119, 0.663);
+
+}
+
+.cardTemps {
+    font-size: 0.95em;
+    margin: 16px 25px;
+    font-weight: 450;
+}
+
+.cardWeight {
+    font-size: 0.9em;
+    font-weight: 450;
+    margin: 16px;
+}
+
+.cardName {
+    margin: 12px;
+    font-weight: 500;
+}

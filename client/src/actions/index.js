@@ -8,6 +8,8 @@ export const CREATE_DOG = 'CREATE_DOG';
 export const CLEAR_CREATED = 'CLEAR_CREATED';
 export const DOG_DETAIL = 'DOG_DETAIL';
 export const CLEAR_DOGGY = 'CLEAR_DOGGY';
+export const LOADING_AGAIN = 'LOADING_AGAIN';
+export const DELETE_DOG = 'DELETE_DOG';
 
 export const getDogs = () => dispatch => {
     return fetch('http://localhost:3001/dogs')
@@ -66,7 +68,7 @@ export const createDog = (args) => {
             var json = await axios.post('http://localhost:3001/dog', args)
             return dispatch({
                 type: CREATE_DOG,
-                payload: [json.data.msg, json.data.Dog]
+                payload: [json.data.msg, json.data.Dog, json.data.temperaments]
             })
 
         } catch (e) {
@@ -101,5 +103,30 @@ export const dogDetail = (id) => {
 export const clearDoggy = () => {
     return {
         type: CLEAR_DOGGY
+    }
+}
+
+export const loadingAgain = () => {
+    return{
+        type: LOADING_AGAIN,
+    }
+}
+
+export const deleteDog = (id) => {
+    return async function (dispatch) {
+        try {
+            var json = await axios.delete(`http://localhost:3001/dogs/${id}`)
+            return dispatch({
+                type: DELETE_DOG,
+                payload:json.data
+            })
+        }catch(e) {
+            if(e.response?.status===404 || e.response?.status===417) {
+                return dispatch({
+                type: DELETE_DOG,
+                payload: json.data
+            })}
+            else alert('Server error')
+        }
     }
 }

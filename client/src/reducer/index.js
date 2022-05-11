@@ -1,4 +1,4 @@
-import { CLEAR_CREATED, CLEAR_DOGGY, CREATE_DOG, DOG_DETAIL, FILTER_TOGETHER, GET_ALL_DOGS, ORDER_BY_FEATURE } from "../actions";
+import { CLEAR_CREATED, CLEAR_DOGGY, CREATE_DOG, DELETE_DOG, DOG_DETAIL, FILTER_TOGETHER, GET_ALL_DOGS, LOADING_AGAIN, ORDER_BY_FEATURE } from "../actions";
 import { GET_TEMPERAMENTS } from "../actions";
 
 
@@ -8,6 +8,8 @@ const initialState = {
     temperaments: [],
     created: [],
     doggy: {},
+    deleted: {},
+    loading: true,
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -17,6 +19,7 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 dogs: action.payload,
                 allDogs: action.payload,
+                loading: false,
 
             }
         case GET_TEMPERAMENTS:
@@ -93,12 +96,24 @@ export default function rootReducer(state = initialState, action) {
         case DOG_DETAIL:
             return {
                 ...state,
-                doggy: action.payload
+                doggy: action.payload,
+                loading: false,
             }
         case CLEAR_DOGGY:
             return {
                 ...state,
-                doggy: {}
+                doggy: {},
+                deleted: {},
+            }
+        case LOADING_AGAIN:
+            return {
+                ...state,
+                loading: true
+            }
+        case DELETE_DOG:
+            return {
+                ...state,
+                deleted: action.payload
             }
 
 

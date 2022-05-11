@@ -3,13 +3,15 @@ import React from "react";
 
 const TempsCheckBox = (props) => {
     return (
-        <li>
+        <div className='tempsC'>
 
             <label className='labels'>
-                <input type='checkbox' name='temperament' value={props.name} onChange={(e) => props.handleTempsChange(e)} />
+                
+                <input className='tempsChecks' type='checkbox' name='temperament' value={props.name} onChange={(e) => props.handleTempsChange(e)}
+                checked={props.showTemps.includes(props.name)?true:false} />
                 {props.name}</label>
 
-        </li>
+        </div>
     )
 }
 export default TempsCheckBox;

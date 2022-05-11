@@ -1,0 +1,54 @@
+.pagesB{
+    display: flex;
+    justify-content: center;
+    
+    margin: auto;
+    margin-top: 30px;
+    height: 10vh;
+    width: 80vw;
+    
+}
+
+.Page {
+    margin-left: 5px;
+    margin-right: 5px;
+    
+}
+
+.pagebutton {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(39, 76, 119);
+    color: rgb(255, 204, 213);
+    font-weight: 700;
+    padding: 3px 6px;
+    font-family: 'Montserrat', sans-serif;
+    width: 1.7vw;
+    height: 1.5vw;
+    
+}
+
+.pagebutton:hover{
+    border: none;
+    background-color: rgb(255, 204, 213);
+    color: rgb(39, 76, 119);
+    cursor: pointer;
+    padding: 3px 6px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.currentPage{
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(255, 204, 213);
+    color: rgb(39, 76, 119);
+    font-weight: 700;
+    padding: 3px 6px;
+    font-family: 'Montserrat', sans-serif;
+    width: 1.7vw;
+    height: 1.5vw;
+}
+
+.flb{
+    width: 3vw;
+}

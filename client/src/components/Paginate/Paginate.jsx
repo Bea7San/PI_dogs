@@ -1,3 +1,4 @@
+import './paginate.css'
 import React from "react";
 
 export default function Paginate({ dogsPerPage, allDogs, paginate, currentPage }) {
@@ -21,28 +22,28 @@ export default function Paginate({ dogsPerPage, allDogs, paginate, currentPage }
 
     return (
         <nav>
-            <ul className='InARow' >
-                <li>
-                    <button onClick={() => paginate(1)}>First</button>
-                </li>
-                <li>
-                    <button onClick={() => currentPage > 1 ? paginate(currentPage - 1) : paginate(currentPage)}>{prevNext[0]}</button>
-                </li>
+            <div className='pagesB' >
+                <div className="Page">
+                    {currentPage !== 1 && <button className={currentPage===1? 'currentPage flb':'pagebutton flb'} onClick={() => paginate(1)}>First</button>}
+                </div>
+                <div className="Page">
+                    {currentPage !== 1 && <button className={currentPage===1? 'currentPage':'pagebutton'} onClick={() => currentPage > 1 ? paginate(currentPage - 1) : paginate(currentPage)}>{prevNext[0]}</button>}
+                </div>
 
                 {
                     showOnly(3)?.map(page => (
-                        <li className="Page" key={page}>
-                            <button onClick={() => paginate(page)}>{page}</button>
-                        </li>
+                        <div className="Page" key={page}>
+                            <button className={currentPage===page ? 'currentPage' :'pagebutton'} value={page} onClick={() => paginate(page)}>{page}</button>
+                        </div>
                     ))
                 }
-                <li>
-                    <button onClick={() => currentPage < totalPages ? paginate(currentPage + 1) : paginate(currentPage)}>{prevNext[1]}</button>
-                </li>
-                <li>
-                    <button onClick={() => paginate(totalPages)}>Last</button>
-                </li>
-            </ul>
+                <div className="Page">
+                    {currentPage !== totalPages && <button className={currentPage===totalPages? 'currentPage' :'pagebutton'} onClick={() => currentPage < totalPages ? paginate(currentPage + 1) : paginate(currentPage)}>{prevNext[1]}</button>}
+                </div>
+                <div className="Page">
+                    {currentPage !== totalPages && <button className={currentPage===totalPages? 'currentPage flb' :'pagebutton flb'} onClick={() => paginate(totalPages)}>Last</button>}
+                </div>
+            </div>
         </nav>
     )
 }

@@ -1,7 +1,8 @@
 import './NavBar.css'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import corgi from '../../images/corgi.png'
+import glasses from '../../images/glasses.png'
+import logopink from '../../images/Assetpink\ 1.png'
 
 export default function NavBar() {
     return (
@@ -9,19 +10,19 @@ export default function NavBar() {
             <nav className='navBar'>
                 
                     <NavLink to={'/'} className='link'>
-                        <h1 className='title'><img className='logo' src={corgi} alt='' /> Ledoggy</h1>
+                        <h1 className='title'><img className='logo' src={logopink} alt='' /> LeDoggy</h1>
                     </NavLink>
-                    <ul className='items'>
-                        <li className='list-item'>
+                    <div className='items'>
+                        <div className='list-item'>
                             <NavLink to={'/home'} className='link' activeClassName='selected'>Home</NavLink>
-                        </li>
-                        <li className='list-item'>
+                        </div>
+                        <div className='list-item'>
                             <NavLink to={'/create'} className='link' activeClassName='selected'>Create</NavLink>
-                        </li>
-                        <li className='list-item'>
+                        </div>
+                        <div className='list-item'>
                             <NavLink to={'/about'} className='link' activeClassName='selected'>About</NavLink>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 
 
 
